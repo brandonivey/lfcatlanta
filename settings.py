@@ -1,6 +1,72 @@
 from __future__ import absolute_import, unicode_literals
 
 ######################
+# CARTRIDGE SETTINGS #
+######################
+
+# The following settings are already defined in cartridge.shop.defaults
+# with default values, but are common enough to be put here, commented
+# out, for convenient overriding.
+
+# Sequence of available credit card types for payment.
+# SHOP_CARD_TYPES = ("Mastercard", "Visa", "Diners", "Amex")
+
+# Setting to turn on featured images for shop categories. Defaults to False.
+# SHOP_CATEGORY_USE_FEATURED_IMAGE = True
+
+# Set an alternative OrderForm class for the checkout process.
+# SHOP_CHECKOUT_FORM_CLASS = 'cartridge.shop.forms.OrderForm'
+
+# If True, the checkout process is split into separate
+# billing/shipping and payment steps.
+# SHOP_CHECKOUT_STEPS_SPLIT = True
+
+# If True, the checkout process has a final confirmation step before
+# completion.
+# SHOP_CHECKOUT_STEPS_CONFIRMATION = True
+
+# Controls the formatting of monetary values accord to the locale
+# module in the python standard library. If an empty string is
+# used, will fall back to the system's locale.
+# SHOP_CURRENCY_LOCALE = ""
+
+# Dotted package path and class name of the function that
+# is called on submit of the billing/shipping checkout step. This
+# is where shipping calculation can be performed and set using the
+# function ``cartridge.shop.utils.set_shipping``.
+# SHOP_HANDLER_BILLING_SHIPPING = \
+#                           "cartridge.shop.checkout.default_billship_handler"
+
+# Dotted package path and class name of the function that
+# is called once an order is successful and all of the order
+# object's data has been created. This is where any custom order
+# processing should be implemented.
+# SHOP_HANDLER_ORDER = "cartridge.shop.checkout.default_order_handler"
+
+# Dotted package path and class name of the function that
+# is called on submit of the payment checkout step. This is where
+# integration with a payment gateway should be implemented.
+# SHOP_HANDLER_PAYMENT = "cartridge.shop.checkout.default_payment_handler"
+
+# Sequence of value/name pairs for order statuses.
+# SHOP_ORDER_STATUS_CHOICES = (
+#     (1, "Unprocessed"),
+#     (2, "Processed"),
+# )
+
+# Sequence of value/name pairs for types of product options,
+# eg Size, Colour.
+# SHOP_OPTION_TYPE_CHOICES = (
+#     (1, "Size"),
+#     (2, "Colour"),
+# )
+
+# Sequence of indexes from the SHOP_OPTION_TYPE_CHOICES setting that
+# control how the options should be ordered in the admin,
+# eg for "Colour" then "Size" given the above:
+# SHOP_OPTION_ADMIN_ORDER = (2, 1)
+
+######################
 # MEZZANINE SETTINGS #
 ######################
 
@@ -16,6 +82,8 @@ from __future__ import absolute_import, unicode_literals
 # ADMIN_MENU_ORDER = (
 #     ("Content", ("pages.Page", "blog.BlogPost",
 #        "generic.ThreadedComment", ("Media Library", "fb_browse"),)),
+#     ("Shop", ("shop.Product", "shop.ProductOption", "shop.DiscountCode",
+#         "shop.Sale", "shop.Order")),
 #     ("Site", ("sites.Site", "redirects.Redirect", "conf.Setting")),
 #     ("Users", ("auth.User", "auth.Group",)),
 # )
@@ -94,7 +162,7 @@ MANAGERS = ADMINS
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', 'lfcatlanta.com']
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -121,7 +189,7 @@ LANGUAGES = (
 # A boolean that turns on/off debug mode. When set to ``True``, stack traces
 # are displayed for error pages. Should always be set to ``False`` in
 # production. Best set to ``True`` in local_settings.py
-DEBUG = False
+DEBUG = True
 
 # Whether a user's session cookie expires when the Web browser is closed.
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
@@ -240,6 +308,7 @@ INSTALLED_APPS = (
     "django.contrib.sitemaps",
     "django.contrib.staticfiles",
     "lfcatlanta",
+    "cartridge.shop",
     "mezzanine.boot",
     "mezzanine.conf",
     "mezzanine.core",
@@ -249,7 +318,7 @@ INSTALLED_APPS = (
     "mezzanine.pages",
     "mezzanine.galleries",
     "mezzanine.twitter",
-    #"mezzanine.accounts",
+    "mezzanine.accounts",
     #"mezzanine.mobile",
 )
 
@@ -277,11 +346,12 @@ MIDDLEWARE_CLASSES = (
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.locale.LocaleMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.redirects.middleware.RedirectFallbackMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
+    "cartridge.shop.middleware.ShopMiddleware",
     "mezzanine.core.request.CurrentRequestMiddleware",
-    "mezzanine.core.middleware.RedirectFallbackMiddleware",
     "mezzanine.core.middleware.TemplateForDeviceMiddleware",
     "mezzanine.core.middleware.TemplateForHostMiddleware",
     "mezzanine.core.middleware.AdminLoginInterfaceSelectorMiddleware",
@@ -310,6 +380,8 @@ OPTIONAL_APPS = (
     PACKAGE_NAME_GRAPPELLI,
 )
 
+DEBUG_TOOLBAR_CONFIG = {"INTERCEPT_REDIRECTS": False}
+
 ###################
 # DEPLOY SETTINGS #
 ###################
@@ -318,15 +390,17 @@ OPTIONAL_APPS = (
 # Check fabfile.py for defaults.
 
 # FABRIC = {
-#     "SSH_USER": "", # SSH username for host deploying to
-#     "HOSTS": ALLOWED_HOSTS[:1], # List of hosts to deploy to (eg, first host)
-#     "DOMAINS": ALLOWED_HOSTS, # Domains for public site
-#     "REPO_URL": "ssh://hg@bitbucket.org/user/project", # Project's repo URL
+#     "SSH_USER": "", # SSH username
+#     "SSH_PASS":  "", # SSH password (consider key-based authentication)
+#     "SSH_KEY_PATH":  "", # Local path to SSH key file, for key-based auth
+#     "HOSTS": [], # List of hosts to deploy to
 #     "VIRTUALENV_HOME":  "", # Absolute remote path for virtualenvs
 #     "PROJECT_NAME": "", # Unique identifier for project
-#     "REQUIREMENTS_PATH": "requirements.txt", # Project's pip requirements
+#     "REQUIREMENTS_PATH": "", # Path to pip requirements, relative to project
 #     "GUNICORN_PORT": 8000, # Port gunicorn will listen on
 #     "LOCALE": "en_US.UTF-8", # Should end with ".UTF-8"
+#     "LIVE_HOSTNAME": "www.example.com", # Host for public site.
+#     "REPO_URL": "", # Git or Mercurial remote repo URL for the project
 #     "DB_PASS": "", # Live database password
 #     "ADMIN_PASS": "", # Live admin user password
 #     "SECRET_KEY": SECRET_KEY,

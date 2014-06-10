@@ -1,0 +1,14 @@
+{% extends "pages/page.html" %}
+
+{% load mezzanine_tags event %}
+
+{% block main %}{{ block.super }}
+
+{% for event in events %}
+<h3><a href="{{event.get_absolute_url}}">{{event.title}}</a> <small>From
+        {{event.start}} to {{event.end}}</small></h3>
+    {{event.content|richtext_filter|truncatewords_html:40|safe}}
+    <a href="{{event.get_absolute_url}}" class="btn">More info &rarr;</a>
+{% endfor %}
+
+{% endblock %}

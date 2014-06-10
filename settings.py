@@ -308,6 +308,7 @@ INSTALLED_APPS = (
     "django.contrib.sitemaps",
     "django.contrib.staticfiles",
     "lfcatlanta",
+    "events",
     "cartridge.shop",
     "mezzanine.boot",
     "mezzanine.conf",

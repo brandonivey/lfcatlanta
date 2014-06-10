@@ -1,0 +1,28 @@
+{% extends "pages/page.html" %}
+
+{% load mezzanine_tags event %}
+
+{% block main %}{{ block.super }}
+
+<div style="float:right;">
+    <a href='{{event|icalendar_url}}' class="btn btn-small">
+        Add to Outlook/iCal
+    </a>
+</div>
+
+<p class='lead'>
+From {{event.start}} to {{event.end}}
+</p>
+
+<div class="row-fluid">
+    <div class="span4">
+        <b>Address</b>
+        <address>
+            {{event.location|linebreaksbr}}<br />
+        </address>
+    </div>
+</div>
+
+{{event.content|richtext_filter|safe}}
+
+{% endblock %}

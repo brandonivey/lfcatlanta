@@ -2,3 +2,7 @@ south
 django-compressor
 Mezzanine==3.1.4
 icalendar
+boto
+fabric
+awscli
+config

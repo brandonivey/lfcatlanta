@@ -1,9 +1,11 @@
 from __future__ import print_function, unicode_literals
 from future.builtins import input, open
 
+import json
 import os
 import re
 import sys
+import time
 from functools import wraps
 from getpass import getpass, getuser
 from glob import glob
@@ -14,6 +16,11 @@ from fabric.api import env, cd, prefix, sudo as _sudo, run as _run, hide, task
 from fabric.contrib.files import exists, upload_template
 from fabric.colors import yellow, green, blue, red
 
+
+# import configuration variables from untracked config file
+aws_cfg = json.load(open("aws.json"))
+app_settings = json.load(open("settings.json"))
+# env.key_filename = os.path.expanduser(os.path.join(aws_cfg["key_dir"], "%s.pem" % aws_cfg["key_name"]))
 
 ################
 # Config setup #

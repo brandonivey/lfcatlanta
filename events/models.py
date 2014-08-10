@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.db import models
 from django.contrib.sites.models import Site
 from django.core.exceptions import ValidationError
@@ -39,7 +40,7 @@ class EventContainer(Page):
 
     def events(self):
         """ convenience method for getting all events in a container """
-        return Event.objects.published().order_by('start')
+        return list(Event.objects.published().filter(start__gte=datetime.now()))
 
 
 def _get_current_domain():

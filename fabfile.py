@@ -17,11 +17,6 @@ from fabric.contrib.files import exists, upload_template
 from fabric.colors import yellow, green, blue, red
 
 
-# import configuration variables from untracked config file
-aws_cfg = json.load(open("aws.json"))
-app_settings = json.load(open("settings.json"))
-# env.key_filename = os.path.expanduser(os.path.join(aws_cfg["key_dir"], "%s.pem" % aws_cfg["key_name"]))
-
 ################
 # Config setup #
 ################

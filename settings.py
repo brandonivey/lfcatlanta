@@ -386,6 +386,9 @@ OPTIONAL_APPS = (
 
 DEBUG_TOOLBAR_CONFIG = {"INTERCEPT_REDIRECTS": False}
 
+# Auth Module
+AUTH_PROFILE_MODULE = "lfcatlanta.LFCSiteProfile"
+
 ###################
 # DEPLOY SETTINGS #
 ###################

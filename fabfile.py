@@ -464,6 +464,12 @@ def remove():
 
 @task
 @log_call
+def start():
+    start_args = (env.proj_name, env.proj_name)
+    sudo("supervisorctl start %s:gunicorn_%s" % start_args)
+
+@task
+@log_call
 def restart():
     """
     Restart gunicorn worker processes for the project.

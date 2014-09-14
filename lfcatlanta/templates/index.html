@@ -10,9 +10,19 @@
 
 {% block main %}
 {% blocktrans %}
-<h2>Congratulations!</h2>
-<p>
-    Welcome to your LFC Atlanta's homepage.
-</p>
+    <h1>Welcome to the home of LFC Atlanta</h1>
+    <p>an official Liverpool FC Supporters group<br /><br /><img src="/static/media/uploads/1410940_10202397164033845_1325898173_o.jpg" width="540" /></p>
 {% endblocktrans %}
+{% endblock %}
+
+{% block right_panel %}
+    {% nevercache %}
+    {% include "includes/user_panel.html" %}
+    {% endnevercache %}
+    <div class="panel panel-default">
+    <div class="panel-body">
+        <a class="twitter-timeline" href="https://twitter.com/lfctweet" data-widget-id="467367746565439488" data-tweet-limit="3" data-chrome="noborders">Tweets by @lfctweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    </div>
+    </div>
 {% endblock %}

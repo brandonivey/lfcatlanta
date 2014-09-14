@@ -7,3 +7,7 @@ class LFCSiteProfile(models.Model):
     date_of_birth = models.DateField()
     lfc_membership_id = models.CharField(_("LFC Membership ID"), max_length=64)
     bio = models.TextField()
+
+    class Meta:
+        verbose_name = "LFC Site Profile"
+        verbose_name_plural = "LFC Site Profiles"

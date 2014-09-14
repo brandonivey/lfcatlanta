@@ -395,6 +395,23 @@ AUTH_PROFILE_MODULE = "lfcatlanta.LFCSiteProfile"
 
 # These settings are used by the default fabfile.py provided.
 # Check fabfile.py for defaults.
+FABRIC = {
+    "SSH_USER": "ubuntu", # SSH username
+    "SSH_PASS":  "", # SSH password (consider key-based authentication)
+    "SSH_KEY_PATH":  "/Users/bivey/.ec2/bivey-key-pair.pem", # Local path to SSH key file, for key-based auth
+    "HOSTS": ['54.88.186.37'], # List of hosts to deploy to
+    "VIRTUALENV_HOME":  "/usr/local/virtualenvs", # Absolute remote path for virtualenvs
+    "PROJECT_NAME": "lfcatlanta", # Unique identifier for project
+    "REQUIREMENTS_PATH": "requirements.txt", # Path to pip requirements, relative to project
+    "GUNICORN_PORT": 8000, # Port gunicorn will listen on
+    "LOCALE": "en_US.UTF-8", # Should end with ".UTF-8"
+    "LIVE_HOSTNAME": "ec2-54-88-186-37.compute-1.amazonaws.com",
+    "REPO_URL": "https://github.com/Savory/lfcatlanta.git",
+    "DB_PASS": "Youll Never Walk Alone",
+    "ADMIN_PASS": "default",
+    "SECRET_KEY": SECRET_KEY,
+    "NEVERCACHE_KEY": NEVERCACHE_KEY,
+}
 
 
 ##################

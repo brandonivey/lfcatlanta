@@ -9,9 +9,11 @@ from .models import Event, EventContainer
 
 class EventAdmin(DisplayableAdmin):
     fieldsets = (
-        deepcopy(DisplayableAdmin.fieldsets[0]),
+        (None, {
+            "fields": ["title", "status"],
+        }),
         ("Event details", {
-            'fields': ('content', 'start', 'end', 'location')
+            'fields': ('content', 'start', 'end', 'location', 'external_url')
         }),
         deepcopy(DisplayableAdmin.fieldsets[1]),
     )

@@ -313,6 +313,7 @@ INSTALLED_APPS = (
     "moderna",
     "lfcatlanta",
     "events",
+    "feeds",
     # "cartridge.shop",
     "mezzanine.boot",
     "mezzanine.conf",

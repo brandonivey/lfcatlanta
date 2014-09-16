@@ -16,6 +16,7 @@ class Event(Displayable, RichText):
     start = models.DateTimeField(_("start"))
     end = models.DateTimeField(_("end"))
     location = models.TextField()
+    external_url = models.URLField(blank=True, null=True)
 
     class Meta:
         verbose_name = "Event"

@@ -1,4 +1,7 @@
 from datetime import datetime
+from string import punctuation
+from urllib import unquote
+
 from django.db import models
 from django.contrib.sites.models import Site
 from django.core.exceptions import ValidationError
@@ -6,8 +9,9 @@ from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
 
 from mezzanine.pages.models import Page
-from mezzanine.core.models import Displayable
-from mezzanine.core.models import RichText
+from mezzanine.core.fields import FileField
+from mezzanine.core.models import Displayable, RichText, Orderable
+from mezzanine.utils.models import upload_to
 from mezzanine.utils.sites import current_site_id
 
 
@@ -42,6 +46,35 @@ class EventContainer(Page):
     def events(self):
         """ convenience method for getting all events in a container """
         return list(Event.objects.published().filter(start__gte=datetime.now()))
+
+
+class EventImage(Orderable):
+    """ images for events """
+    event = models.ForeignKey(Event, related_name="images")
+    image = FileField(_("Image"), max_length=200, format="Image",
+                     upload_to=upload_to("events.EventImage.image", "events"))
+    description = models.CharField(_("Description"), max_length=200, blank=True)
+
+    class Meta:
+        verbose_name = _("Image")
+        verbose_name_plural = _("Images")
+
+    def __unicode__(self):
+        return self.description
+
+    def save(self, *args, **kwargs):
+        """
+        If no description is given when created, create one from the
+        file name.
+        """
+        if not self.id and not self.description:
+            name = unquote(self.image.url).split("/")[-1].rsplit(".", 1)[0]
+            name = name.replace("'", "")
+            name = "".join([c if c not in punctuation else " " for c in name])
+            name = "".join([s.upper() if i == 0 or name[i - 1] == " " else s
+                            for i, s in enumerate(name)])
+            self.description = name
+        super(EventImage, self).save(*args, **kwargs)
 
 
 def _get_current_domain():

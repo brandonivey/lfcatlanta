@@ -5,22 +5,25 @@
 {% block breadcrumb_wrapper %}
 {% endblock %}
 
+{% block left_wrapper %}
+{% endblock %}
+
 {% block main %}{{ block.super }}
 <div class="row">
-<div class="col-lg-12">
-{% for feed in page.feedlist.feeds %}
-    <div class="row">
-    <ul class="portfolio">
-    <h4>{{ feed.title }}</h4>
-    {% for entry in feed.fetch %}
-        <li class="col-lg-3">
-        <a href="{{ entry.link }}" title="{{ entry.summary }}">{{ entry.title }}</a>
-        </li>
+    <div class="col-lg-12">
+    {% for feed in page.feedlist.feeds %}
+        <div class="col-lg-4">
+        <ul class="portfolio">
+        <h4>{{ feed.title }}</h4>
+        {% for entry in feed.fetch %}
+            <li>
+            <a href="{{ entry.link }}" title="{{ entry.summary }}">{{ entry.title }}</a>
+            </li>
+        {% endfor %}
+        </ul>
+        </div>
     {% endfor %}
-    </ul>
     </div>
-{% endfor %}
-</div>
 </div>
 {% endblock %}
 

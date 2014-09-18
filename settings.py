@@ -263,11 +263,6 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 # Name of the directory for the project.
 PROJECT_DIRNAME = PROJECT_ROOT.split(os.sep)[-1]
 
-# Every cache key will get prefixed with this value - here we set it to
-# the name of the directory the project is in to try and use something
-# project specific.
-CACHE_MIDDLEWARE_KEY_PREFIX = PROJECT_DIRNAME
-
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
 STATIC_URL = "/static/"
@@ -391,9 +386,22 @@ DEBUG_TOOLBAR_CONFIG = {"INTERCEPT_REDIRECTS": False}
 # Auth Module
 AUTH_PROFILE_MODULE = "lfcatlanta.LFCSiteProfile"
 
-###################
-# DEPLOY SETTINGS #
-###################
+
+#############
+# CACHING   #
+#############
+
+CACHE_MIDDLEWARE_SECONDS = 60
+
+# Every cache key will get prefixed with this value
+CACHE_MIDDLEWARE_KEY_PREFIX = PROJECT_DIRNAME
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '127.0.0.1:11211',
+    }
+}
 
 
 ##################

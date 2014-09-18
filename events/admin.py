@@ -1,13 +1,18 @@
 from django.contrib import admin
 from copy import deepcopy
 
-from mezzanine.core.admin import DisplayableAdmin
+from mezzanine.core.admin import DisplayableAdmin, TabularDynamicInlineAdmin
 from mezzanine.pages.admin import PageAdmin
 
-from .models import Event, EventContainer
+from .models import Event, EventContainer, EventImage
+
+
+class EventImageInline(TabularDynamicInlineAdmin):
+    model = EventImage
 
 
 class EventAdmin(DisplayableAdmin):
+    inlines = (EventImageInline,)
     fieldsets = (
         (None, {
             "fields": ["title", "status"],

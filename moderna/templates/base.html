@@ -146,9 +146,11 @@
 {% block right_wrapper %}
 
 <div class="col-md-{% block right_col_size %}3{% endblock %} {% block right_class %}right{% endblock %}">
-    {% nevercache %}
-    {% include "includes/user_panel.html" %}
-    {% endnevercache %}
+    {% block user_panel %}
+        {% nevercache %}
+        {% include "includes/user_panel.html" %}
+        {% endnevercache %}
+    {% endblock %}
 	<aside class="right-sidebar">
    
     {% block right_panel %}

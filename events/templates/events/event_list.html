@@ -7,7 +7,7 @@
 {% for event in event_list %}
 <h3><a href="{{event.get_absolute_url}}">{{event.title}}</a> <small>From
         {{event.start}} to {{event.end}}</small></h3>
-    {{event.content|richtext_filter|truncatewords_html:40|safe}}
+    {{event.content|richtext_filters|truncatewords_html:40|safe}}
     <a href="{{event.get_absolute_url}}" class="btn">More info &rarr;</a>
 {% endfor %}
 

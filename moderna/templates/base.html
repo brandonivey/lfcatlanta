@@ -18,27 +18,15 @@
 {% compress css %}
 <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
 <link rel="stylesheet" href="{% static "css/fancybox/jquery.fancybox.css" %}">
-
 <link rel="stylesheet" href="{% static "css/flexslider.css" %}">
-
 <link rel="stylesheet" href="{% static "css/mezzanine.css" %}">
 <link rel="stylesheet" href="{% static "css/style.css" %}">
-
 <link rel="stylesheet" href="{% static "skins/default.css" %}">
-
-
-
-
 
 {% if LANGUAGE_BIDI %}
 <link rel="stylesheet" href="{% static "css/rtl.css" %}">
 {% endif %}
-{% ifinstalled cartridge.shop %}
-<link rel="stylesheet" href="{% static "css/cartridge.css" %}">
-{% if LANGUAGE_BIDI %}
-<link rel="stylesheet" href="{% static "css/cartridge.rtl.css" %}">
-{% endif %}
-{% endifinstalled %}
+
 {% block extra_css %}{% endblock %}
 {% endcompress %}
 
@@ -195,17 +183,26 @@
 </footer>
 </div>
 {% compress js %}
-
-<script src="{% static "js/jquery.easing.1.3.js"%}"></script>
-
-<script src="{% static "js/jquery.fancybox.pack.js"%}"></script>
-<script src="{% static "js/jquery.fancybox-media.js"%}"></script>
-<script src="{% static "js/google-code-prettify/prettify.js"%}"></script>
-<script src="{% static "js/portfolio/jquery.quicksand.js"%}"></script>
-<script src="{% static "js/portfolio/setting.js"%}"></script>
-<script src="{% static "js/jquery.flexslider.js"%}"></script>
-<script src="{% static "js/animate.js"%}"></script>
-<script src="{% static "js/custom.js"%}"></script>
+    <script src="{% static "js/jquery.fancybox.pack.js"%}"></script>
+    <script src="{% static "js/jquery.fancybox-media.js"%}"></script>
+    <script src="{% static "js/google-code-prettify/prettify.js"%}"></script>
+    <script src="{% static "js/portfolio/jquery.quicksand.js"%}"></script>
+    <script src="{% static "js/portfolio/setting.js"%}"></script>
+    <script src="{% static "js/jquery.flexslider.js"%}"></script>
+    <script src="{% static "js/animate.js"%}"></script>
+    <script src="{% static "js/custom.js"%}"></script>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{% static "js/jquery.js"%}"></script>
+    <script src="{% static "js/bootstrap.js"%}"></script>
+    <script src="{% static "js/masonry.pkgd.min.js"%}"></script>
+    <script src="{% static "js/imagesloaded.pkgd.min.js"%}"></script>
+    <script type="text/javascript" src="{% static "http://maps.google.com/maps/api/js?sensor=false&amp;language=en"%}"></script>
+    <script src="{% static "js/gmap3.min.js"%}"></script>
+    <script src="{% static "js/jquery.isotope.min.js"%}"></script>
+    <script src="{% static "js/jquery.easing.js"%}"></script>
+    <script src="{% static "js/script.js"%}"></script>
 {% endcompress %}
 
 </body>

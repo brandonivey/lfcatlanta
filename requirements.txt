@@ -6,3 +6,4 @@ python-memcached
 icalendar
 config
 celery[redis]
+redis

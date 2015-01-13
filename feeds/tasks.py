@@ -3,7 +3,7 @@ import feedparser
 
 from celery import shared_task
 
-from .models import Feed, Entry
+from models import Feed, Entry
 
 
 @shared_task

@@ -16,6 +16,7 @@ def fetch_feeds():
             new_entry, created = Entry.objects.get_or_create(
                 feed = feed,
                 title = e.title,
+                link = e.link,
                 summary = e.summary
                 )
 

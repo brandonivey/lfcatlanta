@@ -324,6 +324,13 @@ BROKER_URL = 'redis://localhost:6379/0'
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
+from datetime import timedelta
+CELERYBEAT_SCHEDULE = {
+    'updated-feeds-10-minutes': {
+        'task': 'feeds.tasks.fetch_feeds',
+        'schedule': timedelta(minutes=10),
+    },
+}
 
 #############
 # CACHING   #

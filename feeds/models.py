@@ -17,18 +17,8 @@ class Feed(models.Model):
         return self.title
 
     def fetch(self):
-        entry_list = []
-        feed = feedparser.parse(self.url)
-        self.save()
-        for entry in feed.entries:
-            new_entry = {
-                'title': entry.title,
-                'description': entry.summary,
-                'link': entry.link,
-                'published': entry.published
-            }
-            entry_list.append(new_entry)
-        return entry_list[:MAX_RESULTS]
+        entries = self.entry_set.all().order_by('-published')
+        return entries[:MAX_RESULTS]
 
 
 class Entry(models.Model):

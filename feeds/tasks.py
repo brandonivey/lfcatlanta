@@ -1,7 +1,6 @@
 from __future__ import absolute_import
-import datetime
-import feedparser
 
+import feedparser
 from celery import shared_task
 
 from feeds.models import Feed, Entry
@@ -14,12 +13,10 @@ def fetch_feeds():
         rssfeed = feedparser.parse(feed.url)
         feed.save()
         for e in rssfeed.entries:
-            pubdate = datetime.datetime.strptime(e.published, "%a, %d %b %Y %H:%M:%S %Z")
             new_entry, created = Entry.objects.get_or_create(
                 feed = feed,
                 title = e.title,
-                summary = e.summary,
-                published = pubdate
+                summary = e.summary
                 )
 
 

@@ -9,10 +9,10 @@
 {% endblock %}
 
 {% block main %}{{ block.super }}
+
+{% for feed in page.feedlist.feeds %}
 <div class="row">
     <div class="col-lg-12">
-    {% for feed in page.feedlist.feeds %}
-        <div class="col-lg-4">
         <ul class="portfolio">
         <h4>{{ feed.title }}</h4>
         {% for entry in feed.fetch %}
@@ -21,10 +21,10 @@
             </li>
         {% endfor %}
         </ul>
-        </div>
-    {% endfor %}
     </div>
 </div>
+{% endfor %}
+
 {% endblock %}
 
 {% block user_panel %}

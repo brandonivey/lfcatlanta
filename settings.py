@@ -336,10 +336,10 @@ CELERYBEAT_SCHEDULE = {
 # EMAIL #
 #########
 EMAIL_HOST_USER = 'admin@lfcatlanta.com'
-EMAIL_USE_TLS = True 
+EMAIL_USE_TLS = False
 EMAIL_HOST = 'mail.privateemail.com'
 EMAIL_HOST_PASSWORD = ''
-EMAIL_PORT = 25
+EMAIL_PORT = 465
 DEFAULT_FROM_EMAIL = "memberships@lfcatlanta.com"
 
 #############

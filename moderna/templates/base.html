@@ -46,139 +46,146 @@
 {% block extra_head %}{% endblock %}
 </head>
 
+
 <body id="{% block body_id %}body{% endblock %}">
 <div id="wrapper">
+
 	<header>
-<div class="navbar navbar-default navbar-static-top" role="navigation">
-<div class="container">
-<div class="navbar-header">
-   <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-  {% if settings.SITE_TITLE %}<a class="navbar-brand" href="/">{{ settings.SITE_TITLE }}</a>{% endif %}
-  {% if settings.SITE_TAGLINE %}<p class="navbar-text">{{ settings.SITE_TAGLINE }}</p>{% endif %}
-</div>
-<div class="navbar-collapse collapse">
-       {% page_menu "pages/menus/dropdown.html" %}
-</div>
-</div>
-</div>
+        <div class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+              {% if settings.SITE_TITLE %}<a class="navbar-brand" href="/">{{ settings.SITE_TITLE }}</a>{% endif %}
+              {% if settings.SITE_TAGLINE %}<p class="navbar-text">{{ settings.SITE_TAGLINE }}</p>{% endif %}
+            </div>
+            <div class="navbar-collapse collapse">
+                   {% page_menu "pages/menus/dropdown.html" %}
+            </div>
+        </div>
+        </div>
 	</header>
-{% block all_content %}
-<div class="container">
 
-{% nevercache %}
-{% if messages %}
-<div class="messages">
-{% for message in messages %}
-<div class="alert alert-dismissable alert-{{ message.tags }}" data-alert="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    {{ message }}
-</div>
-{% endfor %}
-</div>
-{% endif %}
-{% endnevercache %}
+    {% block all_content %}
 
+        <div class="container">
+            {% nevercache %}
+            {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                <div class="alert alert-dismissable alert-{{ message.tags }}" data-alert="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    {{ message }}
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% endnevercache %}
+        </div>
 
-</div>
-{% block breadcrumb_wrapper %}
-<section id="inner-headline">
-<div class="container">
-	<div class="row">
-		<div class="col-lg-12">
-<ul class="breadcrumb">
-{% spaceless %}
-{% block breadcrumb_menu %}{% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}
-{% endspaceless %}
-</ul>
-</div>
-</div>
-</div>
-</section>
-{% endblock %}
-{% block title_wrapper %}
-<section class="callaction">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="big-cta">
-					<div class="cta-text">
-					<h2>{% block title %}{% endblock %}</h2>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-{% endblock %}
-<section id="{% block section_id %}content{% endblock %}">
-<div class="container">
-<div class="row">
-{% block left_wrapper %}
-	<div class="col-md-{% block left_col_size %}2{% endblock %} {% block left_class %}left{% endblock %}">
-		{% block left_panel %}
-		<div class="panel panel-default tree">{% page_menu "pages/menus/tree.html" %}</div>
-		{% endblock %}
-	</div>
-{% endblock %}
-{% block main_wrapper %}
+        {% block breadcrumb_wrapper %}
+        <section id="inner-headline">
+        <div class="container">
+        	<div class="row">
+        		<div class="col-lg-12">
+                    <ul class="breadcrumb">
+                    {% spaceless %}
+                    {% block breadcrumb_menu %}{% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}
+                    {% endspaceless %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </section>
+        {% endblock %} <!-- breadcrumb_wrapper -->
 
-<div class="col-md-{% block main_col_size %}7{% endblock %} {% block main_class %}middle{% endblock %}">
-    {% block main %}{% endblock %}
-</div>
-{% endblock %}
+        {% block title_wrapper %}
+        <section class="callaction">
+        	<div class="container">
+        		<div class="row">
+        			<div class="col-lg-12">
+        				<div class="big-cta">
+        					<div class="cta-text">
+        					<h2>{% block title %}{% endblock %}</h2>
+        					</div>
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        </section>
+        {% endblock %}
 
-{% block right_wrapper %}
+        <section id="{% block section_id %}content{% endblock %}">
+        <div class="container">
+            <div class="row">
+            {% block left_wrapper %}
+            	<div class="col-md-{% block left_col_size %}2{% endblock %} {% block left_class %}left{% endblock %}">
+            		{% block left_panel %}
+            		<div class="panel panel-default tree">{% page_menu "pages/menus/tree.html" %}</div>
+            		{% endblock %}
+            	</div>
+            {% endblock %} <!-- left_wrapper -->
 
-<div class="col-md-{% block right_col_size %}3{% endblock %} {% block right_class %}right{% endblock %}">
-    {% block user_panel %}
-        {% nevercache %}
-        {% include "includes/user_panel.html" %}
-        {% endnevercache %}
-    {% endblock %}
-	<aside class="right-sidebar">
+            {% block main_wrapper %}
+            <div class="col-md-{% block main_col_size %}7{% endblock %} {% block main_class %}middle{% endblock %}">
+                {% block main %}{% endblock %}
+            </div>
+            {% endblock %} <!-- main_wrapper -->
 
-    {% block right_panel %}
-    {% ifinstalled mezzanine.twitter %}
-    {% include "twitter/tweets.html" %}
-    {% endifinstalled %}
-    {% endblock %}
+            {% block right_wrapper %}
+            <div class="col-md-{% block right_col_size %}3{% endblock %} {% block right_class %}right{% endblock %}">
+                {% block user_panel %}
+                    {% nevercache %}
+                    {% include "includes/user_panel.html" %}
+                    {% endnevercache %}
+                {% endblock %}
+            	<aside class="right-sidebar">
+                {% block right_panel %}
+                <!-- {% ifinstalled mezzanine.twitter %}
+                {% include "twitter/tweets.html" %}
+                {% endifinstalled %} -->
+                {% endblock %}
 
-	</aside>
-</div>
-{% endblock %}
-</div>
-</div>
-</section>
-{% endblock %}
-<footer>
-<div class="container">
-{% page_menu "pages/menus/footer.html" %}
-<div id="sub-footer">
-<div class="row">
-    <div class="col-lg-6">
-		<div class="copyright">
-			<p>
-				<span>Copyright LFC Atlanta</span>
-			</p>
-		</div>
-	</div>
-	<div class="col-lg-6">
-		<ul class="social-network">
-			<li><a title="" data-placement="top" href="https://www.facebook.com/groups/LFCATL/" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
-			<li><a title="" data-placement="top" href="https://twitter.com/lfcatlanta" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
-			<li><a title="" data-placement="top" href="http://instagram.com/lfcatl/" data-original-title="Instagram"><i class="fa fa-instagram"></i></a></li>
-			<li><a title="" data-placement="top" href="https://www.youtube.com/channel/UCvTXqggrC64TYkRotll24BQ" data-original-title="Youtube"><i class="fa fa-youtube"></i></a></li>
-		</ul>
-	</div>
-</div>
-</div>
-</div>
-</footer>
-</div>
+            	</aside>
+            </div>
+            {% endblock %} <!-- right_wrapper -->
+
+            </div>
+        </div>
+        </section>
+
+    {% endblock %} <!-- all_content -->
+
+    <footer>
+    <div class="container">
+        <!-- {% page_menu "pages/menus/footer.html" %} -->
+        <div id="sub-footer">
+            <div class="row">
+                <div class="col-lg-6">
+            		<div class="copyright">
+            			<p>
+            				<span>Copyright &copy; 2014 <strong>LFC Atlanta</strong>. All Right Reserved.</span>
+            			</p>
+            		</div>
+            	</div>
+            	<div class="col-lg-6">
+            		<ul class="social-network">
+            			<li><a title="" data-placement="top" href="https://www.facebook.com/groups/LFCATL/" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
+            			<li><a title="" data-placement="top" href="https://twitter.com/lfcatlanta" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
+            			<li><a title="" data-placement="top" href="http://instagram.com/lfcatl/" data-original-title="Instagram"><i class="fa fa-instagram"></i></a></li>
+            			<li><a title="" data-placement="top" href="https://www.youtube.com/channel/UCvTXqggrC64TYkRotll24BQ" data-original-title="Youtube"><i class="fa fa-youtube"></i></a></li>
+            		</ul>
+            	</div>
+            </div>
+        </div>
+    </div>
+    </footer>
+
+</div> <!-- div id="wrapper" -->
+
 {% compress js %}
     <script src="{% static "js/jquery.fancybox.pack.js"%}"></script>
     <script src="{% static "js/jquery.fancybox-media.js"%}"></script>

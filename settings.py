@@ -340,7 +340,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST = 'mail.privateemail.com'
 EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 26
-DEFAULT_FROM_EMAIL = "memberships@lfcatlanta.com"
+DEFAULT_FROM_EMAIL = "admin@lfcatlanta.com"
 
 #############
 # CACHING   #

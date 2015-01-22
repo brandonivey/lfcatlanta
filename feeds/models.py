@@ -4,7 +4,7 @@ import feedparser
 
 from mezzanine.pages.models import Page
 
-MAX_RESULTS = 4
+MAX_RESULTS = 5
 
 
 class Feed(models.Model):

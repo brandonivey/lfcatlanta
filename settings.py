@@ -335,6 +335,7 @@ CELERYBEAT_SCHEDULE = {
 #########
 # EMAIL #
 #########
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST_USER = 'admin@lfcatlanta.com'
 EMAIL_USE_TLS = True 
 EMAIL_HOST = 'mail.privateemail.com'

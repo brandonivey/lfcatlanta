@@ -8,7 +8,7 @@
 
 {% block title_wrapper %}
 {% endblock %}
-
+ß
 {% block breadcrumb_wrapper %}
 {% endblock %}
 
@@ -29,7 +29,7 @@
 {% with page.gallery.images.all as images %}
 				 <ul class="portfolio" id="thumbs">
 					{% for image in images %}
-						 
+
 						<!-- Item Project and Filter Name -->
 						<li data-type="web" data-id="{{ image.id }}" class="col-lg-3 design">
 						<div class="item-thumbs">
@@ -42,14 +42,13 @@
 						<img alt="{{ image.description }}" src="{{ MEDIA_URL }}{% thumbnail image.file 131 75 %}">
 						</div>
 						</li>
-					
 						<!-- End Item Project -->
 
 					{% endfor %}
 				</ul>
 			</section>
-		</div>		
-	</div>	
+		</div>
+	</div>
 {% endwith %}
 </div>
 {% endblock %}

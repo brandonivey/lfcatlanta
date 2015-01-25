@@ -318,6 +318,14 @@ DEBUG_TOOLBAR_CONFIG = {"INTERCEPT_REDIRECTS": False}
 
 # Auth Module
 AUTH_PROFILE_MODULE = "lfcatlanta.LFCSiteProfile"
+ACCOUNTS_VERIFICATION_REQUIRED = True
+ACCOUNTS_APPROVAL_REQUIRED = True
+ACCOUNTS_PROFILE_FORM_EXCLUDE_FIELDS = (
+    'shirt',
+    'card',
+    'paid',
+    'lfcatlanta_id',
+    )
 
 # CELERY
 BROKER_URL = 'redis://localhost:6379/0'
@@ -342,6 +350,7 @@ EMAIL_HOST = 'mail.privateemail.com'
 EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 26
 DEFAULT_FROM_EMAIL = "admin@lfcatlanta.com"
+EMAIL_FAIL_SILENTLY = False
 
 #############
 # CACHING   #

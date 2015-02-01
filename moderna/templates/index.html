@@ -2,16 +2,12 @@
 {% load i18n  mezzanine_tags staticfiles%}
 {% block meta_title %}{% trans "Home" %}{% endblock %}
 {% block title %}{% trans "Home" %}{% endblock %}
+
 {% block breadcrumb_wrapper %}
 {% endblock %}
 
 {% block title_wrapper %}
 {% endblock %}
-
-{% block breadcrumb_menu %}
-<li class="active">{% trans "Home" %}</li>
-{% endblock %}
-
 
 {% block all_content %}
 <section id="{% block section_id %}featured{% endblock %}">
@@ -48,7 +44,7 @@
                 </div>
               </li>
               <li>
-                <img src="{% static "img/slides/3.jpg" %}" alt="" height="640"/>
+                <img src="{% static "img/slides/3.jpg" %}" alt="" />
                 <div class="flex-caption">
                     <h3>LFC Atlanta</h3>
 					<p>Official Liverpool FC Supporters Group</p>

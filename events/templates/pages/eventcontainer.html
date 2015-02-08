@@ -8,12 +8,26 @@
 {% block breadcrumb_wrapper %}
 {% endblock %}
 
+{% block left_wrapper %}
+{% endblock %}
+
 {% block main %}{{ block.super }}
 {% for event in page.eventcontainer.events %}
-<h3><a href="{{event.get_absolute_url}}">{{event.title}}</a> <small>From
-        {{event.start}} to {{event.end}}</small></h3>
-    {{event.content|richtext_filters|truncatewords_html:40|safe}}
-    <a href="{{event.get_absolute_url}}" class="btn">More info &rarr;</a>
+    <div class="blog-item well">
+        <h2><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></h2>
+        <div class="blog-meta clearfix">
+        <p class="pull-left">
+            <i class="icon-calendar"></i>&nbsp;&nbsp;<a href="#">From {{ event.start|date:"DATETIME_FORMAT" }} to {{ event.end|date:"P" }}</a>
+        </p>
+        <p class="pull-right">
+        {% if event.external_url %}
+            <i class="icon-link"></i>&nbsp;&nbsp;<a href="{{ event.external_url }}">{{ event.external_url }}</a>
+        {% endif %}
+        </p>
+        </div>
+        {{event.content|striptags|truncatewords:40|safe}}
+        <a href="{{ event.get_absolute_url }}" class="btn btn-link">Read More <i class="icon-angle-right"></i></a>
+    </div>
 {% endfor %}
 {% endblock %}
 

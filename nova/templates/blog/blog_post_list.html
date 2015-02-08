@@ -72,7 +72,7 @@
 {% endif %}
 <div class="blog">
 {% for blog_post in blog_posts.object_list %}
-	{% block blog_post_main%}	
+	{% block blog_post_main%}
 	<div class="blog-item well">
 			{% block blog_post_list_post_title %}
 			{% editable blog_post.title %}
@@ -87,24 +87,24 @@
 		{% with blog_post.user as author %}
 		<i class="icon-user"></i><a href="{% url "blog_post_list_author" author %}"> {{author.get_full_name|default:author.username}}</a>
 		{% endwith %}
-		
+
 		{% with blog_post.categories.all as categories %}
 			{% if categories %}
 			<i class="icon-folder-open"></i>
     		{% for category in categories %}
 			<a href="{% url "blog_post_list_category" category.slug %}">{{ category }}</a>{% if not forloop.last %}, {% endif %}
 			{% endfor %}
-			
+
 			{% endif %}
 			{% endwith %}
-			
-		
+
+
 		</p>
 		<p class="pull-right">
 		{% if blog_post.allow_comments %}
-    
+
 			{% if settings.COMMENTS_DISQUS_SHORTNAME %}
-			
+
 			<i class="icon-comments"></i>
 			<a href="{{ blog_post.get_absolute_url }}#disqus_thread"
 				data-disqus-identifier="{% disqus_id_for blog_post %}">
@@ -115,17 +115,17 @@
 			{% blocktrans count comments_count=blog_post.comments_count %}{{ comments_count }} comment{% plural %}{{ comments_count }} comments{% endblocktrans %}
 			</a>
 			{% endif %}
-			
+
 			{% endif %}
 		</p>
-	
-			
+
+
 		{% endeditable %}
 		{% endblock %}
 	</div>
-	
+
 	<p>
-			
+
 			{% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}
 			{% block blog_post_list_post_featured_image %}
 			<a href="{{ blog_post.get_absolute_url }}">
@@ -133,7 +133,7 @@
 			</a>
 			{% endblock %}
 			{% endif %}
-			
+
 	</p>
 
 {% block blog_post_list_post_content %}

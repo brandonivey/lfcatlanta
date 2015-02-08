@@ -2,27 +2,31 @@
 
 {% load mezzanine_tags event %}
 
+{% block left_wrapper %}
+{% endblock %}
+
 {% block main %}{{ block.super }}
+<div class="blog">
+    <p class='lead'>
+    <i class="icon-calendar"></i>&nbsp;&nbsp;<a href="#">{{ event.start|date:"DATETIME_FORMAT" }} to {{ event.end|date:"P" }}</a>
+    </p>
 
-<div style="float:right;">
-    <a href='{{event|icalendar_url}}' class="btn btn-small">
-        Add to Outlook/iCal
-    </a>
-</div>
+    {{event.content|richtext_filters|safe}}
 
-<p class='lead'>
-From {{event.start}} to {{event.end}}
-</p>
-
-<div class="row-fluid">
-    <div class="span4">
-        <b>Address</b>
-        <address>
-            {{event.location|linebreaksbr}}<br />
-        </address>
+    <div class="blog-meta clearfix">
+        <div class="span4">
+            <b>Address</b>
+            <address>
+                {{event.location|linebreaksbr}}<br />
+            </address>
+        </div>
+        <div class="span4">
+        {% if event.external_url %}
+            <b>Link</b>
+            <p><a href="{{ event.external_url }}">{{ event.external_url }}</a></p>
+        {% endif %}
+        </div>
     </div>
+
 </div>
-
-{{event.content|richtext_filters|safe}}
-
 {% endblock %}

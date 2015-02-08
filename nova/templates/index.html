@@ -1,0 +1,265 @@
+{% extends "base.html" %}
+{% load i18n  mezzanine_tags staticfiles%}
+{% block meta_title %}{% trans "Home" %}{% endblock %}
+{% block title %}{% trans "Home" %}{% endblock %}
+{% block breadcrumb_wrapper %}
+{% endblock %}
+
+{% block title_wrapper %}
+{% endblock %}
+
+{% block all_content %}
+
+ <!--Slider-->
+    <section id="slide-show">
+     <div id="slider" class="sl-slider-wrapper">
+
+        <!--Slider Items-->
+        <div class="sl-slider">
+            <!--Slider Item1-->
+            <div class="sl-slide item1" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="1">
+                <div class="sl-slide-inner">
+                    <div class="container">
+                        <img class="pull-right" src="{% static "images/sample/slider/villa1.jpg" %}" alt="" width="930"/>
+                        <h2>Welcome</h2>
+                        <h3 class="gap">to LFC Atlanta</h3>
+                        <a class="btn btn-large btn-transparent" href="about-us/">About Us</a>
+                    </div>
+                </div>
+            </div>
+            <!--/Slider Item1-->
+
+            <!--Slider Item2-->
+            <div class="sl-slide item2" data-orientation="horizontal" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1">
+                <div class="sl-slide-inner">
+                    <div class="container">
+                        <img class="pull-right" src="{% static "images/sample/slider/sund2.jpg" %}" alt="" width="800"/>
+                        <h2>Gatherings</h2>
+                        <h3 class="gap">See and Be Seen</h3>
+                        <a class="btn btn-large btn-transparent" href="photos/">View Photos</a>
+                    </div>
+                </div>
+            </div>
+            <!--Slider Item2-->
+
+            <!--Slider Item3-->
+            <div class="sl-slide item3" data-orientation="horizontal" data-slice1-rotation="3" data-slice2-rotation="3" data-slice1-scale="2" data-slice2-scale="1">
+                <div class="sl-slide-inner">
+                   <div class="container">
+                    <img class="pull-right" src="{% static "images/sample/slider/manu4.jpg" %}" alt="" width="800"/>
+                    <h2>Join Us</h2>
+                    <h3 class="gap">Be part of LFC Atlanta</h3>
+                    <a class="btn btn-large btn-transparent" href="accounts/signup/">Sign Up</a>
+                </div>
+            </div>
+        </div>
+        <!--Slider Item3-->
+
+    </div>
+    <!--/Slider Items-->
+
+    <!--Slider Next Prev button-->
+    <nav id="nav-arrows" class="nav-arrows">
+        <span class="nav-arrow-prev"><i class="icon-angle-left"></i></span>
+        <span class="nav-arrow-next"><i class="icon-angle-right"></i></span>
+    </nav>
+    <!--/Slider Next Prev button-->
+
+</div>
+<!-- /slider-wrapper -->
+</section>
+<!--/Slider-->
+<section class="main-info">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span9">
+                <h4>We would love to have you join LFC Atlanta or visit us to watch a match</h4>
+                <p class="no-margin">Send us a message, sign up for email newsletter</p>
+            </div>
+            <div class="span3">
+                <a class="btn btn-success btn-large pull-right" href="contact-us/">Contact Us</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--Services-->
+<section id="services">
+    <div class="container">
+        <div class="center gap">
+            <h3>Upcoming Events</h3>
+            <p class="lead">Look at what we have coming up</p>
+        </div>
+
+        <div class="center">
+            <img alt="" src="{% static "images/roy_banner.jpg" %}" width="100%">
+        </div>
+
+    </div>
+</section>
+<!--/Services-->
+
+<section id="recent-works">
+    <div class="container">
+        <div class="center">
+            <h3>Our Recent Events</h3>
+            <p class="lead">Look at some of the recent LFC events</p>
+        </div>
+        <div class="gap"></div>
+        <ul class="gallery col-4">
+            <!--Item 1-->
+            <li>
+                <div class="preview">
+                    <img alt="" src="{% static "images/events/charlotte_tailgate.jpg" %}">
+                    <div class="overlay">
+                    </div>
+                    <div class="links">
+                        <a data-toggle="modal" href="#modal-1"><i class="icon-eye-open"></i></a><a href="/gallery/lfc-tour-charlotte-2014/"><i class="icon-link"></i></a>
+                    </div>
+                </div>
+                <div class="desc">
+                    <h5>LFC Tour: Charlotte, NC</h5>
+                </div>
+                <div id="modal-1" class="modal hide fade">
+                    <a class="close-modal" href="javascript:;" data-dismiss="modal" aria-hidden="true"><i class="icon-remove"></i></a>
+                    <div class="modal-body">
+                        <img src="{% static "images/events/charlotte_tailgate.jpg" %}" alt=" " width="100%" style="max-height:400px">
+                    </div>
+                </div>
+            </li>
+            <!--/Item 1-->
+
+            <!--Item 2-->
+            <li>
+                <div class="preview">
+                    <img alt="" src="{% static "images/events/sund1.jpg" %}">
+                    <div class="overlay">
+                    </div>
+                    <div class="links">
+                        <a data-toggle="modal" href="#modal-1"><i class="icon-eye-open"></i></a><a href="/gallery/"><i class="icon-link"></i></a>
+                    </div>
+                </div>
+                <div class="desc">
+                    <h5>2014-2015 Fall and Winter</h5>
+                </div>
+                <div id="modal-1" class="modal hide fade">
+                    <a class="close-modal" href="javascript:;" data-dismiss="modal" aria-hidden="true"><i class="icon-remove"></i></a>
+                    <div class="modal-body">
+                        <img src="{% static "images/events/sund1.jpg" %}" alt=" " width="100%" style="max-height:400px">
+                    </div>
+                </div>
+            </li>
+            <!--/Item 2-->
+
+            <!--Item 3-->
+            <li>
+                <div class="preview">
+                    <img alt="" src="{% static "images/events/manu5.jpg" %}">
+                    <div class="overlay">
+                    </div>
+                    <div class="links">
+                        <a data-toggle="modal" href="#modal-3"><i class="icon-eye-open"></i></a><a href="/gallery/2013-2014-season-best-of/"><i class="icon-link"></i></a>
+                    </div>
+                </div>
+                <div class="desc">
+                    <h5>2013-2014 Season Best Of</h5>
+                </div>
+                <div id="modal-3" class="modal hide fade">
+                    <a class="close-modal" href="javascript:;" data-dismiss="modal" aria-hidden="true"><i class="icon-remove"></i></a>
+                    <div class="modal-body">
+                        <img src="{% static "images/events/manu5.jpg" %}"alt=" " width="100%" style="max-height:400px">
+                    </div>
+                </div>
+            </li>
+            <!--/Item 3-->
+
+            <!--Item 4-->
+            <li>
+                <div class="preview">
+                    <img alt="" src="{% static "images/events/derby_day_meehans.jpg" %}">
+                    <div class="overlay">
+                    </div>
+                    <div class="links">
+                        <a data-toggle="modal" href="#modal-4"><i class="icon-eye-open"></i></a><a href="/gallery/merseyside-derby-february-2015/"><i class="icon-link"></i></a>
+                    </div>
+                </div>
+                <div class="desc">
+                    <h5>Merseyside Derby February 2015</h5>
+                </div>
+                <div id="modal-4" class="modal hide fade">
+                    <a class="close-modal" href="javascript:;" data-dismiss="modal" aria-hidden="true"><i class="icon-remove"></i></a>
+                    <div class="modal-body">
+                        <img src="{% static "images/events/derby_day_meehans.jpg" %}" alt=" " width="100%" style="max-height:400px">
+                    </div>
+                </div>
+            </li>
+            <!--/Item 4-->
+
+        </ul>
+    </div>
+
+</section>
+
+<section id="clients" class="main">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span2">
+                <div class="clearfix">
+                    <h4 class="pull-left">OUR PARTNERS</h4>
+                    <div class="pull-right">
+                        <a class="prev" href="#myCarousel" data-slide="prev"><i class="icon-angle-left icon-large"></i></a> <a class="next" href="#myCarousel" data-slide="next"><i class="icon-angle-right icon-large"></i></a>
+                    </div>
+                </div>
+                <p>We would like to think the sponsors and charities that we work with.</p>
+            </div>
+            <div class="span10">
+                <div id="myCarousel" class="carousel slide clients">
+                  <!-- Carousel items -->
+                  <div class="carousel-inner">
+                    <div class="active item">
+                        <div class="row-fluid">
+                            <ul class="thumbnails">
+                                <li class="span3"><a href="http://www.jamiecarragher23.co.uk/cw/JC23/pages/23Foundation.htm"><img src="{% static "images/partners/23logo.png" %}"></a></li>
+                                <li class="span3"><a href="http://www.worldsoccershop.com/"><img src="{% static "images/partners/worldsoccershop.jpg" %}"></a></li>
+                                <li class="span3"><a href="http://www.meehansdowntown.com/downtown_home.html"><img src="{% static "images/partners/meehans.jpg" %}"></a></li>
+                                <li class="span3"><a href="http://www.soccerstreets.org/"><img src="{% static "images/partners/soccerinthestreets.jpg" %}"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="row-fluid">
+                            <ul class="thumbnails">
+                                <li class="span3"><a href="http://www.stbaldricks.org/"><img src="{% static "images/partners/stbaldricks.png" %}"></a></li>
+                                <li class="span3"><a href="http://www.anfieldshop.com/"><img src="{% static "images/partners/anfieldshop.png" %}"></a></li>
+                                <li class="span3"><a href="http://www.meehansdowntown.com/downtown_home.html"><img src="{% static "images/partners/meehans.jpg" %}"></a></li>
+                                <li class="span3"><a href="http://www.liverpoolfc.com/"><img src="{% static "images/partners/liverpoolfc.png" %}"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /Carousel items -->
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+
+
+
+{% block left_wrapper %}
+{% endblock %}
+
+
+{% block main_wrapper %}
+
+
+{% endblock %}
+{% block right_wrapper %}
+{% endblock %}
+
+
+
+{% endblock %}

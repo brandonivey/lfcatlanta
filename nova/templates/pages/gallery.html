@@ -27,20 +27,21 @@
                     <div class="overlay">
                     </div>
                     <div class="links">
-                        <a href="#modal-1" data-toggle="modal"><i class="icon-eye-open"></i></a><a href="#"><i class="icon-link"></i></a>
+                        <a href="#modal-{{image.id}}" data-toggle="modal"><i class="icon-eye-open"></i></a><a href="{{ image.file.url }}"><i class="icon-link"></i></a>
                     </div>
                 </div>
                 <div class="desc">
                     <h5>{{ image.description }}</h5>
                 </div>
-                <div class="modal hide fade" id="modal-1">
+                <div class="modal hide fade" id="modal-{{image.id}}">
                     <a aria-hidden="true" data-dismiss="modal" href="javascript:;" class="close-modal"><i class="icon-remove"></i></a>
                     <div class="modal-body">
-                        <img width="100%"  alt="{{ image.description }}" src="{{ MEDIA_URL }}{% thumbnail image.file 131 75 %}">
+                        <img width="100%"  alt="{{ image.description }}" src="{{ image.file.url }}">
                     </div>
                 </div>
             </li>
 			<!-- End Item Project -->
+
 		{% endfor %}
 		</ul>
 

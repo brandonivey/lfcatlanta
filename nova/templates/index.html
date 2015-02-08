@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n  mezzanine_tags staticfiles%}
+{% load i18n  mezzanine_tags staticfiles cache %}
 {% block meta_title %}{% trans "Home" %}{% endblock %}
 {% block title %}{% trans "Home" %}{% endblock %}
 {% block breadcrumb_wrapper %}
@@ -17,7 +17,7 @@
         <!--Slider Items-->
         <div class="sl-slider">
             <!--Slider Item1-->
-            <div class="sl-slide item1" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="1">
+            <div class="sl-slide item1" data-orientation="horizontal" data-slice1-rotation="0" data-slice2-rotation="0" data-slice1-scale="2" data-slice2-scale="1">
                 <div class="sl-slide-inner">
                     <div class="container">
                         <img class="pull-right" src="{% static "images/sample/slider/villa1.jpg" %}" alt="" width="930"/>
@@ -30,7 +30,7 @@
             <!--/Slider Item1-->
 
             <!--Slider Item2-->
-            <div class="sl-slide item2" data-orientation="horizontal" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1">
+            <div class="sl-slide item2" data-orientation="horizontal" data-slice1-rotation="0" data-slice2-rotation="0" data-slice1-scale="2" data-slice2-scale="1">
                 <div class="sl-slide-inner">
                     <div class="container">
                         <img class="pull-right" src="{% static "images/sample/slider/sund2.jpg" %}" alt="" width="800"/>
@@ -43,7 +43,7 @@
             <!--Slider Item2-->
 
             <!--Slider Item3-->
-            <div class="sl-slide item3" data-orientation="horizontal" data-slice1-rotation="3" data-slice2-rotation="3" data-slice1-scale="2" data-slice2-scale="1">
+            <div class="sl-slide item3" data-orientation="horizontal" data-slice1-rotation="0" data-slice2-rotation="0" data-slice1-scale="2" data-slice2-scale="1">
                 <div class="sl-slide-inner">
                    <div class="container">
                     <img class="pull-right" src="{% static "images/sample/slider/charlotte1.jpg" %}" alt="" width="800"/>
@@ -69,6 +69,7 @@
 <!-- /slider-wrapper -->
 </section>
 <!--/Slider-->
+
 <section class="main-info">
     <div class="container">
         <div class="row-fluid">
@@ -94,11 +95,11 @@
         <div class="center">
             <img alt="" src="{% static "images/roy_banner.jpg" %}" width="100%">
         </div>
-
     </div>
 </section>
 <!--/Services-->
 
+{% cache 3600 recent %}
 <section id="recent-works">
     <div class="container">
         <div class="center">
@@ -197,9 +198,11 @@
 
         </ul>
     </div>
-
 </section>
+{% endcache %}
 
+
+{% cache 3600 clients %}
 <section id="clients" class="main">
     <div class="container">
         <div class="row-fluid">
@@ -245,8 +248,7 @@
     </div>
 </div>
 </section>
-
-
+{% endcache %}
 
 
 {% block left_wrapper %}

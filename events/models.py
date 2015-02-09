@@ -45,7 +45,7 @@ class EventContainer(Page):
 
     def events(self):
         """ convenience method for getting all events in a container """
-        return list(Event.objects.published().filter(start__gte=datetime.now()))
+        return list(Event.objects.published().filter(start__gte=datetime.now()).order_by('start'))
 
 
 class EventImage(Orderable):

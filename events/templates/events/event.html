@@ -6,6 +6,16 @@
 {% endblock %}
 
 {% block main %}{{ block.super }}
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=105418239493121&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<script>
+window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+</script>
 <div class="blog">
     <p class='lead'>
     <i class="icon-calendar"></i>&nbsp;&nbsp;<a href="#">{{ event.start|date:"DATETIME_FORMAT" }} to {{ event.end|date:"P" }}</a>
@@ -26,6 +36,11 @@
             <p><a href="{{ event.external_url }}">{{ event.external_url }}</a></p>
         {% endif %}
         </div>
+    </div>
+
+    <div class="author-meta">
+        <div class="fb-share-button" data-href="{{ request.build_absolute_uri }}" data-layout="button_count"></div>
+        <a class="twitter-share-button" href="https://twitter.com/share">Tweet</a>
     </div>
 
 </div>

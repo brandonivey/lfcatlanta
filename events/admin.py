@@ -12,6 +12,7 @@ class EventImageInline(TabularDynamicInlineAdmin):
 
 
 class EventAdmin(DisplayableAdmin):
+    date_hierarchy = 'start'
     inlines = (EventImageInline,)
     list_display = ("title", "start", "status")
     fieldsets = (

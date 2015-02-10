@@ -13,6 +13,7 @@ class EventImageInline(TabularDynamicInlineAdmin):
 
 class EventAdmin(DisplayableAdmin):
     inlines = (EventImageInline,)
+    list_display = ("title", "start", "status")
     fieldsets = (
         (None, {
             "fields": ["title", "status"],

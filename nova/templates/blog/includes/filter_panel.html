@@ -105,6 +105,11 @@
 <div class="widget-blog-items">
 {% for recent_post in recent_posts %}
 	<div class="widget-blog-item media">
+        {% if recent_post.featured_image %}
+        <div class="pull-left">
+            <img  alt="" src="{{ MEDIA_URL }}{% thumbnail recent_post.featured_image 65 65 %}">
+         </div>
+        {% endif %}
 		<div class="media-body">
 		<a href="{{ recent_post.get_absolute_url }}"
 			><h5>{{ recent_post.title }}</h5></a>

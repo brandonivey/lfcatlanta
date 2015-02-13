@@ -8,3 +8,4 @@ config
 celery[redis]
 redis
 python-twitter
+django-embed-video

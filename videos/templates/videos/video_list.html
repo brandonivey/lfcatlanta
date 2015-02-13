@@ -1,0 +1,57 @@
+{% extends "pages/page.html" %}
+{% load i18n future mezzanine_tags blog_tags embed_video_tags cache %}
+
+{% block left_wrapper %}
+{% endblock %}
+
+{% block main %}
+{% cache 7200 videos %}
+<section id="videos">
+    <div class="container">
+        <div class="center">
+        {% if page %}
+            {% block blog_post_list_pagecontent %}
+                {% if page.get_content_model.content %}
+                    {% editable page.get_content_model.content %}
+                    {{ page.get_content_model.content|richtext_filters|safe }}
+                    {% endeditable %}
+                {% endif %}
+            {% endblock %}
+        {% endif %}
+        </div>
+        <div class="gap"></div>
+        <ul class="gallery col-3">
+        {% for video_object in video_list.object_list %}
+            {% video video_object.url as evideo %}
+            <li>
+                <div class="preview">
+                    <img alt="" src="{{ evideo.thumbnail }}">
+                    <div class="overlay">
+                    </div>
+                    <div class="links">
+                        <a data-toggle="modal" href="#modal-{{video_object.id}}" title="Watch"><i class="icon-eye-open"></i></a><a href="{{ video_object.get_absolute_url }}" title="View Larger"><i class="icon-link"></i></a>
+                    </div>
+                </div>
+                <div class="desc">
+                    <h3>{{ video_object.title }}</h3>
+                </div>
+                <div id="modal-{{video_object.id}}" class="modal hide fade">
+                    <a class="close-modal" href="javascript:;" data-dismiss="modal" aria-hidden="true"><i class="icon-remove"></i></a>
+                    <div class="modal-body">
+                        {% video evideo "small" %}
+                    </div>
+                </div>
+            </li>
+            {% endvideo %}
+        {% endfor %}
+        </ul>
+    </div>
+    <div class="pagination">
+        <ul class="pagination pagination-lg">{% pagination_for video_list %}</ul>
+    </div>
+</section>
+{% endcache %}
+{% endblock %}
+
+{% block right_wrapper %}
+{% endblock %}

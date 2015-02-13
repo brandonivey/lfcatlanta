@@ -1,0 +1,25 @@
+{% extends "pages/page.html" %}
+{% load i18n future mezzanine_tags blog_tags embed_video_tags cache %}
+
+{% block left_wrapper %}
+{% endblock %}
+
+{% block main %}
+{% cache 3600 video_detail %}
+<section id="video_detail">
+    <div class="container">
+        <div class="desc">
+            <h2>{{ video_object.title }}</h2>
+        </div>
+        <div>
+        {% video video_object.url as evideo %}
+            {% video evideo "large" %}
+        {% endvideo %}
+        </div>
+    </div>
+</section>
+{% endcache %}
+{% endblock %}
+
+{% block right_wrapper %}
+{% endblock %}

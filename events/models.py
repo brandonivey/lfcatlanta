@@ -24,6 +24,7 @@ class Event(Displayable, RichText):
 
     class Meta:
         verbose_name = "Event"
+        ordering = ("start",)
 
     def clean(self):
         super(Event, self).clean()

@@ -21,7 +21,7 @@ def video_list(request, template="videos/video_list.html"):
     video_list = paginate(video_list, request.GET.get("page", 1),
                           MAX_RESULTS_PAGE,
                           settings.MAX_PAGING_LINKS)
-    print video_list
+
     context = {'video_list': video_list}
     templates.append(template)
     return render(request, templates, context)

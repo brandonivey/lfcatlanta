@@ -22,7 +22,6 @@
         <ul class="gallery col-3">
         {% for video_object in video_list.object_list %}
             {% video video_object.url as evideo %}
-            {% cache 3600 video_object.url %}
             <li>
                 <div class="preview">
                     <img alt="" src="{{ evideo.thumbnail }}">
@@ -42,7 +41,6 @@
                     </div>
                 </div>
             </li>
-            {% endcache %}
             {% endvideo %}
         {% endfor %}
         </ul>

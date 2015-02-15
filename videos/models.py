@@ -18,17 +18,3 @@ class Video(Displayable):
         url_name = "video_detail"
         kwargs = {"slug": self.slug}
         return reverse(url_name, kwargs=kwargs)
-
-
-# class VideoList(Page):
-#     """ Page object for holding a list of events """
-#     hide_children = models.BooleanField(default=True,
-#         verbose_name="Hide feeds in this container from navigation")
-
-#     class Meta:
-#         verbose_name = "Video List"
-
-#     @property
-#     def videos(self):
-#         """ convenience method for getting all events in a container """
-#         return list(Video.objects.all().order_by('-pub_date'))

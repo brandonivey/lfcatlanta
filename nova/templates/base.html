@@ -91,62 +91,51 @@
 		</div>
 		</div>
 	</header>
+
 {% block all_content %}
-
-
-{% block title_wrapper %}
-    <section class="title">
-        <div class="container">
-            <div class="row-fluid">
-                <div class="span6">
-                    <h1>{% block title %}{% endblock %}</h1>
-                </div>
-                <div class="span6">
-                    <ul class="breadcrumb pull-right">
-                       {% spaceless %}
-						{% block breadcrumb_menu %}{% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}
-					   {% endspaceless %}
-                    </ul>
+    {% block title_wrapper %}
+        <section class="title">
+            <div class="container">
+                <div class="row-fluid">
+                    <div class="span6">
+                        <h1>{% block title %}{% endblock %}</h1>
+                    </div>
+                    <div class="span6">
+                        <ul class="breadcrumb pull-right">
+                           {% spaceless %}
+    						{% block breadcrumb_menu %}{% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}
+    					   {% endspaceless %}
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- / .title -->
-{% endblock %}
-<section id="{% block section_id %}content{% endblock %}" class="{% block section_class %}{% endblock %}">
-	<div class="container">
-		<div class="row-fluid">
-		{% block left_wrapper %}
-			<div class="span{% block left_col_size %}2{% endblock %} {% block left_class %}left{% endblock %}">
-				{% block left_panel %}
-					<div class="panel panel-default tree">{% page_menu "pages/menus/tree.html" %}</div>
-				{% endblock %}
-			</div>
-		{% endblock %}
-	{% block main_wrapper %}
-
-		<div class="span{% block main_col_size %}7{% endblock %} {% block main_class %}middle{% endblock %}">
-			{% block main %}{% endblock %}
-		</div>
-{% endblock %}
-
-{% block right_wrapper %}
-    <aside class="span{% block right_col_size %}3{% endblock %} {% block right_class %}right{% endblock %}">
-    {% nevercache %}
-    {% include "includes/user_panel.html" %}
-    {% endnevercache %}
-
-    {% block right_panel %}
-    {% ifinstalled mezzanine.twitter %}
-    {% include "twitter/tweets.html" %}
-    {% endifinstalled %}
+        </section>
+        <!-- / .title -->
     {% endblock %}
-	</aside>
-{% endblock %}
 
-</div>
-</div>
-</section>
+    <section id="{% block section_id %}content{% endblock %}" class="{% block section_class %}{% endblock %}">
+	<div class="container">
+	    <div class="row-fluid">
+    	{% block left_wrapper %}
+    			{% block left_panel %}
+    			{% endblock %}
+    	{% endblock %}
+
+    	{% block main_wrapper %}
+    		<div class="span{% block main_col_size %}8{% endblock %} {% block main_class %}middle{% endblock %}">
+    			{% block main %}{% endblock %}
+    		</div>
+        {% endblock %}
+
+        {% block right_wrapper %}
+            <aside class="span{% block right_col_size %}4{% endblock %} {% block right_class %}right{% endblock %}">
+            {% block right_panel %}
+            {% endblock %}
+        	</aside>
+        {% endblock %}
+        </div>
+    </div>
+    </section>
 {% endblock %}
 
 

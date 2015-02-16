@@ -4,7 +4,7 @@
 {% blog_categories as categories %}
 {% if categories %}
 <div class="widget">
-<h5>{% trans "Categories" %}</h5>
+<h3>{% trans "Categories" %}</h3>
 <ul class="archive arrow">
 {% for category in categories %}
 <li><a href="{% url "blog_post_list_category" category.slug %}"

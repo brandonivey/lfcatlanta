@@ -20,7 +20,7 @@
         {% endif %}
         </p>
         </div>
-        {{event.content|striptags|linebreaksbr|truncatewords:40|safe}}<br />
+        {{event.content|striptags|linebreaksbr|truncatewords:40|safe}}
         <a href="{{ event.get_absolute_url }}" class="btn btn-link">Read More <i class="icon-angle-right"></i></a>
     </div>
 {% endfor %}

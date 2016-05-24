@@ -335,6 +335,7 @@ CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 from datetime import timedelta
+from celery.schedules import crontab
 CELERYBEAT_SCHEDULE = {
     'updated-feeds-60-minutes': {
         'task': 'feeds.tasks.fetch_feeds',
@@ -342,9 +343,10 @@ CELERYBEAT_SCHEDULE = {
     },
     'cleanup-feeds-task': {
         'task': 'feeds.tasks.cleaup_feeds',
-        'schedule': timedelta(hours=12),
+        'schedule': crontab(hour=0, minute=30),
     }
 }
+CELERY_TIMEZONE = 'UTC'
 
 #########
 # EMAIL #

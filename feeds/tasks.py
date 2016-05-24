@@ -1,5 +1,6 @@
 from __future__ import absolute_import
 
+from datetime import datetime, timedelta
 import feedparser
 from celery import shared_task
 
@@ -20,7 +21,8 @@ def fetch_feeds():
                 summary = e.summary
                 )
 
-
 @shared_task
-def test(param):
-    return 'The test task executed with argument "%s" ' % param
+def cleanup_feeds():
+    """ Delete entries older than x hours """
+    cutoff = datetime.today() - timedelta(days=3)
+    Entry.objects.filter(published__lt=cutoff).delete()

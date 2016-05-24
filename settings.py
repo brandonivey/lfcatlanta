@@ -336,10 +336,14 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 from datetime import timedelta
 CELERYBEAT_SCHEDULE = {
-    'updated-feeds-10-minutes': {
+    'updated-feeds-60-minutes': {
         'task': 'feeds.tasks.fetch_feeds',
-        'schedule': timedelta(minutes=10),
+        'schedule': timedelta(minutes=60),
     },
+    'cleanup-feeds-task': {
+        'task': 'feeds.tasks.cleaup_feeds',
+        'schedule': timedelta(hours=12),
+    }
 }
 
 #########

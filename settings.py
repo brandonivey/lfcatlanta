@@ -339,11 +339,11 @@ from celery.schedules import crontab
 CELERYBEAT_SCHEDULE = {
     'updated-feeds-60-minutes': {
         'task': 'feeds.tasks.fetch_feeds',
-        'schedule': timedelta(minutes=60),
+        'schedule': timedelta(minutes=60)
     },
     'cleanup-feeds-task': {
         'task': 'feeds.tasks.cleaup_feeds',
-        'schedule': crontab(hour=0, minute=30),
+        'schedule': crontab(hour=0, minute=30)
     }
 }
 CELERY_TIMEZONE = 'UTC'

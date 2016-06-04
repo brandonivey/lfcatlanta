@@ -10,7 +10,7 @@ class LFCSiteProfile(models.Model):
     shirt = models.BooleanField(default=False)
     card = models.BooleanField(default=False)
     paid = models.CharField(max_length=6, blank=True)
-    lfcatlanta_id = models.CharField(max_length=4, blank=True, null=True)
+    lfcatlanta_id = models.CharField(max_length=8, blank=True, null=True)
 
     class Meta:
         verbose_name = "LFC Site Profile"

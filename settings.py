@@ -336,16 +336,7 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 from datetime import timedelta
 from celery.schedules import crontab
-CELERYBEAT_SCHEDULE = {
-    'updated-feeds-60-minutes': {
-        'task': 'feeds.tasks.fetch_feeds',
-        'schedule': timedelta(minutes=60)
-    },
-    'cleanup-feeds-task': {
-        'task': 'feeds.tasks.cleaup_feeds',
-        'schedule': crontab(hour=0, minute=30)
-    }
-}
+CELERYBEAT_SCHEDULE = {}
 CELERY_TIMEZONE = 'UTC'
 
 #########
@@ -353,7 +344,7 @@ CELERY_TIMEZONE = 'UTC'
 #########
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST_USER = 'admin@lfcatlanta.com'
-EMAIL_USE_TLS = True 
+EMAIL_USE_TLS = True
 EMAIL_HOST = 'mail.privateemail.com'
 EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 26

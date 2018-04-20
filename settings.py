@@ -347,7 +347,7 @@ EMAIL_HOST_USER = 'admin@lfcatlanta.com'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'mail.privateemail.com'
 EMAIL_HOST_PASSWORD = ''
-EMAIL_PORT = 26
+EMAIL_PORT = 587
 DEFAULT_FROM_EMAIL = "admin@lfcatlanta.com"
 EMAIL_FAIL_SILENTLY = False
 

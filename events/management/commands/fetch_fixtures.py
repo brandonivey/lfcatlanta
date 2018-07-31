@@ -15,8 +15,8 @@ headers = {
     "X-Auth-Token": "817d7c8d5aad4f7c9708fc7488b1530a"
 }
 
-LOCATION = "Meehan\'s Downtown\n200 Peachtree St NE\nAtlanta, GA 30303"
-EXTERNAL_URL = "http://www.meehansdowntown.com/"
+LOCATION = "Fado\'s Buckhead\n273 Buckhead Ave NE\nAtlanta, GA 30305\n404-841-0066"
+EXTERNAL_URL = "https://fadoirishpub.com/atlanta/"
 
 TEMPLATE = """
 <h2>Matchday {day}: {title}</h2>
